@@ -2,6 +2,7 @@ package com.example.myhome.controller;
 
 import com.example.myhome.model.Board;
 import com.example.myhome.repository.BoardRepository;
+import com.example.myhome.validator.BoardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,8 @@ import static org.thymeleaf.spring5.util.FieldUtils.hasErrors;
 public class BoardController {
     @Autowired
     private BoardRepository boardRepository;
+    @Autowired
+    private BoardValidator boardValidator;
 
     @GetMapping("/list")
     public String list(Model model) {
@@ -38,6 +41,7 @@ public class BoardController {
     }
     @PostMapping("/form")
     public String greetingSubmit(@Valid Board board,  BindingResult bindingResult){
+        boardValidator.validate(board,bindingResult);
         if (bindingResult.hasErrors()) {
             return "board/form";
         }
