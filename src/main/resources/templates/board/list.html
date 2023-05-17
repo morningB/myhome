@@ -56,7 +56,7 @@
     <tr th:each="board : ${boards}">
       <td th:text="${board.id}">Mark</td>
       <td ><a th:text="${board.title}" th:href="@{/board/form(id=${board.id})}">Otto</a></td>
-      <td>윤주원</td>
+      <td th:text="${board.user.username}">윤주원</td>
     </tr>
   </table>
   <nav aria-label="Page navigation example">

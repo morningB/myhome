@@ -27,7 +27,7 @@
         <div class="form-group">
             <label for="title">제목</label>
             <input type="text" class="form-control"
-                  th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title"th:field="*{title}">
+                   th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title"th:field="*{title}">
             <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
                 제목 에러 메시지
             </div>
